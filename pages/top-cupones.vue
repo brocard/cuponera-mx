@@ -57,6 +57,13 @@
 import Vue, {PropOptions} from 'vue'
 import {MetaInfo} from "vue-meta";
 
+const monthNames = [
+  "Enero", "Febrero", "Marzo",
+  "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre",
+  "Octubre", "Noviembre", "Diciembre"
+];
+
 interface Page {
   title: string
   description: string
