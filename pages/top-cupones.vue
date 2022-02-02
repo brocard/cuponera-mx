@@ -120,12 +120,12 @@ export default Vue.extend({
   },
 
   computed: {
-    seoTitle() {
+    seoTitle(): string {
       return this.page.title
         .replace(/:month/g, monthNames[new Date().getMonth()])
         .replace(/:year/g, new Date().getFullYear().toString())
     },
-    seoDescription() {
+    seoDescription(): string  {
       return this.page.seo_desc
         .replace(/:month/g, monthNames[new Date().getMonth()])
         .replace(/:year/g, new Date().getFullYear().toString())

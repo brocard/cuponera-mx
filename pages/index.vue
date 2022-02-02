@@ -152,25 +152,25 @@ export default Vue.extend({
   },
 
   computed: {
-    subtitle() {
+    subtitle(): string {
       return this.page.subtitle
         .replace(/:month/g, monthNames[new Date().getMonth()])
         .replace(/:year/g, new Date().getFullYear().toString())
     },
-    seoTitle() {
+    seoTitle(): string {
       return this.page.title
         .replace(/:month/g, monthNames[new Date().getMonth()])
         .replace(/:year/g, new Date().getFullYear().toString())
     },
-    seoDescription() {
+    seoDescription(): string  {
       return this.page.seo_desc
         .replace(/:month/g, monthNames[new Date().getMonth()])
         .replace(/:year/g, new Date().getFullYear().toString())
     },
-    productsItems() {
+    productsItems(): Object {
       return this.products.tabs
     },
-    productsAll(){
+    productsAll(): Array<Object> {
       if (!this.products) return []
       return this.filterActive === 'Todos'
         ? Object.keys(this.products.tabs).reduce((acc, tab) => acc.concat(this.products.tabs[tab]), [] as Product[])
