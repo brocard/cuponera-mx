@@ -87,24 +87,23 @@ const Tabs = [
   {
     name: 'Todos',
     current: true,
-  },
-  {
+  }, {
     name: 'Restaurantes',
     current: false,
-  },
-  {
+  }, {
     name: 'Tecnología',
     current: false,
-  },
-  {
+  }, {
     name: 'Top Cupones',
     current: false,
   },
 ]
 
 const monthNames = [
-  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembrr", "Deciembre"
+  "Enero", "Febrero", "Marzo",
+  "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre",
+  "Octubre", "Noviembre", "Diciembre"
 ];
 
 export default Vue.extend({
@@ -156,16 +155,14 @@ export default Vue.extend({
     productsAll(){
       if (!this.products) return []
       return this.filterActive === 'Todos'
-        ? Object.keys(this.productsItems).reduce((acc, tab) => acc.concat(this.productsItems[tab]), [] as Product[])
-        : this.products
+        ? Object.keys(this.products.tabs).reduce((acc, tab) => acc.concat(this.products.tabs[tab]), [] as Product[])
+        : (Object.prototype.hasOwnProperty.call(this.productsItems, this.filterActive) ? this.productsItems[this.filterActive] : [])
     }
   },
 
   methods: {
     filterCategory(tab: string) {
       this.filterActive = tab
-      console.log(tab, 'tab....')
-      this.products = this.productsItems[tab]
     }
   }
 })
