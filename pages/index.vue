@@ -127,7 +127,15 @@ export default Vue.extend({
         {
           hid: 'description',
           name: 'description',
-          content: this.page.content
+          content: this.page.content as string
+        }, {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.page.seo_title as string
+        }, {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.page.seo_desc as string
         }
       ]
     } as {
