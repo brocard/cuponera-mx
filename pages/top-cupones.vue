@@ -90,11 +90,11 @@ export default Vue.extend({
         }, {
           hid: 'og:title',
           name: 'og:title',
-          content: this.page.seo_title as string
+          content: this.seoTitle as string
         }, {
           hid: 'og:description',
           name: 'og:description',
-          content: this.page.seo_desc as string
+          content: this.seoDescription as string
         }
       ]
     } as {
@@ -113,6 +113,16 @@ export default Vue.extend({
   },
 
   computed: {
+    seoTitle() {
+      return this.page.title
+        .replace(/:month/g, monthNames[new Date().getMonth()])
+        .replace(/:year/g, new Date().getFullYear().toString())
+    },
+    seoDescription() {
+      return this.page.seo_desc
+        .replace(/:month/g, monthNames[new Date().getMonth()])
+        .replace(/:year/g, new Date().getFullYear().toString())
+    },
     shops() {
       return this.sidebar.shops
     },
