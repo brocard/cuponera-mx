@@ -97,9 +97,6 @@ export default Vue.extend({
 
   async asyncData({$axios}): Promise<void | object> {
     const { data } = await $axios.get('/top-cuponse')
-
-    console.log(data)
-
     return {
       page: data.page,
       discounts: data.data.discounts,
