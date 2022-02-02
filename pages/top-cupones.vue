@@ -55,6 +55,7 @@
 
 <script lang="ts">
 import Vue, {PropOptions} from 'vue'
+import {MetaInfo} from "vue-meta";
 
 interface Page {
   title: string
@@ -75,6 +76,22 @@ export default Vue.extend({
       discounts: {
         type: Array,
       } as PropOptions<Discount[]>,
+    }
+  },
+
+  head() :MetaInfo {
+    return {
+      title: this.page.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.page.seo_desc as string
+        }
+      ]
+    } as {
+      title: any
+      meta: MetaInfo['meta']
     }
   },
 
