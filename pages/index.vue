@@ -135,7 +135,7 @@ export default Vue.extend({
         }, {
           hid: 'og:description',
           name: 'og:description',
-          content: this.page.seo_desc as string
+          content: this.seoDescription as string
         }
       ]
     } as {
@@ -154,6 +154,11 @@ export default Vue.extend({
   computed: {
     subtitle() {
       return this.page.subtitle
+        .replace(/:month/g, monthNames[new Date().getMonth()])
+        .replace(/:year/g, new Date().getFullYear().toString())
+    },
+    seoDescription() {
+      return this.page.seo_desc
         .replace(/:month/g, monthNames[new Date().getMonth()])
         .replace(/:year/g, new Date().getFullYear().toString())
     },
